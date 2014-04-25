@@ -18,9 +18,11 @@ namespace Tetris
         public int Type { get; set; }
         public int MAXX { get; set; }
         public int MAXY { get; set; }
+        public bool Rotation { get; set; }
 
         public TetrisForm(int maxx, int maxy){
             this.isActive = true;
+            this.Rotation = true;
             this.MAXX = maxx;
             this.MAXY = maxy;
             pickColor();
@@ -137,6 +139,6 @@ namespace Tetris
                 SouthField += 1;
             }
 
-        public virtual void rotate() { }
+        public virtual void rotate(int [,] matrix) { }
     }
 }

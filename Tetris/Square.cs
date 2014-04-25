@@ -18,6 +18,13 @@ namespace Tetris
             rectangle = new Rectangle(5 + x * 25, 5 + y * 25, 20, 20);
         }
 
+        public void changePositions(int x, int y) {
+            rectangle.X = 5 + x * 25;
+            rectangle.Y = 5 + y * 25;
+            X = x;
+            Y = y;
+        }
+
         public void moveLeft() {
             this.X -= 1;
             rectangle = new Rectangle(rectangle.X-25,rectangle.Y,20,20);

@@ -50,7 +50,7 @@ namespace Tetris
                 mainPanel.Invalidate();
             }
             else if (e.KeyCode.Equals(Keys.Up)) {
-                game.activeForm.rotate();
+                game.rotate();
                 mainPanel.Invalidate();
             }
         }

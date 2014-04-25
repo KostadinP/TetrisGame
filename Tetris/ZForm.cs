@@ -42,54 +42,56 @@ namespace Tetris
             this.Type = 2;
         }
 
-        public override void rotate()
+        public override void rotate(int [,] matrix)
         {
             if (this.Type == 1) {
-                changeToTypeTwo();
+                changeToTypeTwo(matrix);
                 this.Type = 2;
             }
             else if (this.Type == 2) {
-                changeToTypeOne();
+                changeToTypeOne(matrix);
                 this.Type = 1;
             }
         }
 
 
-        private void changeToTypeOne() {
+        private void changeToTypeOne(int [,]matrix) {
             List<Square> list = new List<Square>();
 
-            foreach (Square s in SquareList) {
                 list.Add(new Square(this.WestField, this.SouthField));
                 list.Add(new Square(this.WestField+1, this.SouthField));
                 list.Add(new Square(this.WestField+1, this.SouthField-1));
                 list.Add(new Square(this.EastField, this.SouthField-1));
-            }
-            this.SquareList = list;
+                
+                foreach(Square s in list){
+                    if (matrix[s.Y, s.X] == 1) return;
+                }
+                this.SquareList = list;
+                this.WestField = WestField + 1; 
         }
 
-        private void changeToTypeTwo() {
+        private void changeToTypeTwo(int [,] matrix) {
             List<Square> list = new List<Square>();
-            foreach (Square s in SquareList)
-            {
+
                 list.Add(new Square(this.WestField, this.SouthField-1));
                 list.Add(new Square(this.WestField + 1, this.SouthField-1));
                 list.Add(new Square(this.WestField + 1, this.SouthField ));
                 list.Add(new Square(this.EastField, this.SouthField ));
-            }
-            this.SquareList = list;
+
+                foreach (Square s in list)
+                {
+                    if (matrix[s.Y, s.X] == 1) return;
+                }
+                this.SquareList = list;
         }
 
         private void choseType() {
             Random r = new Random();
             int k = r.Next(2);
             if (k == 0)
-            {
                 typeOne();
-            }
             else
-            {
                 typeTwo();
-            }  
         }
 
 

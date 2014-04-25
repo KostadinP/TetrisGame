@@ -48,22 +48,17 @@ namespace Tetris
                 return new ZForm(MAXX, MAXY);
             }
             return null;*/
-            return new ZForm(MAXX, MAXY);
+            return new RowForm(MAXX, MAXY);
         }
 
         public void moveDown()
         {
             List<Coordinate> coordinateList = new List<Coordinate>();
             bool move = activeForm.tryMoveDown(coordinateList);
-
-
             if (move)
-            {
-              
-                if (checkMovingDown(coordinateList))
-                {
+            {              
+                if (checkMoving(coordinateList))
                     activeForm.moveDown();
-                }
                 else
                 {
                     addCoordinateToMatrix(returnBackCoordinates(coordinateList));
@@ -74,7 +69,6 @@ namespace Tetris
             {
                 addCoordinateToMatrix(coordinateList);
                 addNewForm();
-
             }
         }
 
@@ -95,7 +89,6 @@ namespace Tetris
                 int y = list.ElementAt(i).X;
                 matrix[x, y] = 1;
             }
-
         }
 
         public void moveLeft()
@@ -105,11 +98,8 @@ namespace Tetris
 
             if (move)
             {
-
-                if (checkMovingLeft(coordinateList))
-                {
+                if (checkMoving(coordinateList))
                     activeForm.moveLeft();
-                }
             }
         }
         
@@ -121,10 +111,8 @@ namespace Tetris
 
             if (move)
             {
-                if (checkMovingLeft(coordinateList))
-                {
+                if (checkMoving(coordinateList))
                     activeForm.moveRight();
-                }
             }
         }
 
@@ -133,7 +121,7 @@ namespace Tetris
             return tetrisForms;
         }
 
-        private bool checkMovingDown(List<Coordinate> coordinateList) {
+        private bool checkMoving(List<Coordinate> coordinateList) {
             int x;
             int y;
             for (int i = 0; i < coordinateList.Count; i++)
@@ -146,32 +134,13 @@ namespace Tetris
             return true;
         }
 
-        private bool checkMovingLeft(List<Coordinate> coordinateList) {
-            int x;
-            int y;
-            for (int i = 0; i < coordinateList.Count; i++)
-            {
-                x = coordinateList.ElementAt(i).Y;
-                y = coordinateList.ElementAt(i).X;
-                int k = matrix[x, y];
-                if (k == 1) return false;
-            }
-            return true;
+
+
+        public void rotate() {
+            activeForm.rotate(matrix);
         }
 
-        private bool checkMovingRight(List<Coordinate> coordinateList)
-        {
-            int x;
-            int y;
-            for (int i = 0; i < coordinateList.Count; i++)
-            {
-                x = coordinateList.ElementAt(i).Y;
-                y = coordinateList.ElementAt(i).X;
-                int k = matrix[x, y];
-                if (k == 1) return false;
-            }
-            return true;
-        }
+        
 
 
 
