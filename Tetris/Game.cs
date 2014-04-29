@@ -34,7 +34,7 @@ namespace Tetris
 
         private TetrisForm getRandomForm() {
             Random r = new Random();
-          /*  int k = r.Next(3);
+            int k = r.Next(3);
 
             if (k == 0) {
                 return new RowForm(MAXX, MAXY);
@@ -47,8 +47,8 @@ namespace Tetris
             {
                 return new ZForm(MAXX, MAXY);
             }
-            return null;*/
-            return new RowForm(MAXX, MAXY);
+            return null;
+
         }
 
         public void moveDown()
@@ -116,11 +116,6 @@ namespace Tetris
             }
         }
 
-        
-        public List<TetrisForm> getListToDraw() {
-            return tetrisForms;
-        }
-
         private bool checkMoving(List<Coordinate> coordinateList) {
             int x;
             int y;
@@ -132,6 +127,14 @@ namespace Tetris
                 if (k == 1) return false;
             }
             return true;
+        }
+
+        public void draw(Graphics g)
+        {
+            foreach (TetrisForm t in tetrisForms)
+            {
+                t.draw(g);
+            }
         }
 
 

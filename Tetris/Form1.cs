@@ -20,18 +20,7 @@ namespace Tetris
 
         private void mainPanel_Paint(object sender, PaintEventArgs e)
         {
-
-            List<TetrisForm> tetrisFormsList = game.getListToDraw();
-
-            foreach(TetrisForm t in tetrisFormsList){
-                List<Square> list = t.SquareList;
-                
-                foreach (Square s in list)
-                {
-                    e.Graphics.FillRectangle(t.Color, s.rectangle);
-                }
-            
-            }
+            game.draw(e.Graphics);
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)

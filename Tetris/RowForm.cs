@@ -113,7 +113,7 @@ namespace Tetris
                 }
             }
             this.SquareList = list;
-            this.WestField -= 1;
+            this.WestField -= 2;
             this.EastField += 1;
             this.SouthField -= 3;
             return true;

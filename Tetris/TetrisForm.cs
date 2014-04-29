@@ -38,6 +38,12 @@ namespace Tetris
             if (k == 3) { this.Color = Brushes.Green; }
         }
 
+        public void draw(Graphics g) {
+            foreach (Square s in SquareList) {
+                s.draw(g, Color);
+            }
+        }
+
         public bool moveLeft() {
             if (WestField > 0)
             {

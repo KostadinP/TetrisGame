@@ -55,22 +55,30 @@ namespace Tetris
         }
 
 
-        private void changeToTypeOne(int [,]matrix) {
+        private bool changeToTypeOne(int [,]matrix) {
             List<Square> list = new List<Square>();
 
                 list.Add(new Square(this.WestField, this.SouthField));
                 list.Add(new Square(this.WestField+1, this.SouthField));
                 list.Add(new Square(this.WestField+1, this.SouthField-1));
                 list.Add(new Square(this.EastField, this.SouthField-1));
-                
-                foreach(Square s in list){
-                    if (matrix[s.Y, s.X] == 1) return;
+
+                foreach (Square s in list)
+                {
+                    try
+                    {
+                        if (matrix[s.Y, s.X] == 1) return false;
+                    }
+                    catch (IndexOutOfRangeException e)
+                    {
+                        return false;
+                    }
                 }
                 this.SquareList = list;
-                this.WestField = WestField + 1; 
+                return true;
         }
 
-        private void changeToTypeTwo(int [,] matrix) {
+        private bool changeToTypeTwo(int [,] matrix) {
             List<Square> list = new List<Square>();
 
                 list.Add(new Square(this.WestField, this.SouthField-1));
@@ -80,9 +88,17 @@ namespace Tetris
 
                 foreach (Square s in list)
                 {
-                    if (matrix[s.Y, s.X] == 1) return;
+                    try
+                    {
+                        if (matrix[s.Y, s.X] == 1) return false;
+                    }
+                    catch (IndexOutOfRangeException e)
+                    {
+                        return false;
+                    }
                 }
                 this.SquareList = list;
+                return true;
         }
 
         private void choseType() {

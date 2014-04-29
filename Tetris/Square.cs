@@ -12,6 +12,7 @@ namespace Tetris
         public int X { get; set; }
         public int Y { get; set; }
         public Rectangle rectangle;
+
         public Square(int x, int y) {
             this.X = x;
             this.Y = y;
@@ -39,6 +40,11 @@ namespace Tetris
             this.Y += 1;
             rectangle = new Rectangle(rectangle.X, rectangle.Y+25, 20, 20);
         }
+
+        public void draw(Graphics g, Brush b) {
+            g.FillRectangle(b, rectangle);
+        }
+       
 
         public static Rectangle moveSouth (Rectangle rect){
             return new Rectangle(rect.X + 15, rect.Y, rect.Width, rect.Height);
