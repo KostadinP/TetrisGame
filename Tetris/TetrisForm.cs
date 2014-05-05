@@ -19,8 +19,10 @@ namespace Tetris
         public int MAXX { get; set; }
         public int MAXY { get; set; }
         public bool Rotation { get; set; }
+        public int SquareListCount { get { return SquareList.Count; } }
 
-        public TetrisForm(int maxx, int maxy){
+        public TetrisForm(int maxx, int maxy)
+        {
             this.isActive = true;
             this.Rotation = true;
             this.MAXX = maxx;
@@ -29,7 +31,8 @@ namespace Tetris
             SquareList = new List<Square>();
         }
 
-        private void pickColor() {
+        private void pickColor()
+        {
             Random r = new Random();
             int k = r.Next(4);
             if (k == 0) { this.Color = Brushes.Red; }
@@ -38,16 +41,20 @@ namespace Tetris
             if (k == 3) { this.Color = Brushes.Green; }
         }
 
-        public void draw(Graphics g) {
-            foreach (Square s in SquareList) {
+        public void draw(Graphics g)
+        {
+            foreach (Square s in SquareList)
+            {
                 s.draw(g, Color);
             }
         }
 
-        public bool moveLeft() {
+        public bool moveLeft()
+        {
             if (WestField > 0)
             {
-                foreach (Square s in SquareList) {
+                foreach (Square s in SquareList)
+                {
                     s.moveLeft();
                 }
                 WestField -= 1;
@@ -57,10 +64,12 @@ namespace Tetris
             return false;
         }
 
-        public bool moveRight() {
-            if (EastField < MAXY-1)
+        public bool moveRight()
+        {
+            if (EastField < MAXY - 1)
             {
-                foreach (Square s in SquareList) {
+                foreach (Square s in SquareList)
+                {
                     s.moveRight();
                 }
                 EastField += 1;
@@ -71,21 +80,24 @@ namespace Tetris
         }
 
 
-        public bool tryMoveDown(List<Coordinate> tempList) {
+        public bool tryMoveDown(List<Coordinate> tempList)
+        {
 
             if (SouthField < MAXX - 1)
             {
                 for (int i = 0; i < SquareList.Count; i++)
-                {   Square s = SquareList.ElementAt(i);
+                {
+                    Square s = SquareList.ElementAt(i);
                     tempList.Add(new Coordinate(s.X, s.Y + 1));
                 }
                 return true;
             }
-            else {
+            else
+            {
                 for (int i = 0; i < SquareList.Count; i++)
                 {
                     Square s = SquareList.ElementAt(i);
-                    tempList.Add(new Coordinate(s.X, s.Y ));
+                    tempList.Add(new Coordinate(s.X, s.Y));
                 }
             }
             return false;
@@ -94,12 +106,12 @@ namespace Tetris
         public bool tryMoveLeft(List<Coordinate> tempList)
         {
 
-            if (WestField >0)
+            if (WestField > 0)
             {
                 for (int i = 0; i < SquareList.Count; i++)
                 {
                     Square s = SquareList.ElementAt(i);
-                    tempList.Add(new Coordinate(s.X-1, s.Y));
+                    tempList.Add(new Coordinate(s.X - 1, s.Y));
                 }
                 return true;
             }
@@ -117,7 +129,7 @@ namespace Tetris
         public bool tryMoveRight(List<Coordinate> tempList)
         {
 
-            if (EastField <MAXY-1)
+            if (EastField < MAXY - 1)
             {
                 for (int i = 0; i < SquareList.Count; i++)
                 {
@@ -137,14 +149,36 @@ namespace Tetris
             return false;
         }
 
-        public void moveDown() {
+        public void moveDown()
+        {
 
-            foreach (Square s in SquareList) {
+            foreach (Square s in SquareList)
+            {
                 s.moveDown();
             }
-                SouthField += 1;
+            SouthField += 1;
+        }
+
+        public virtual void rotate(int[,] matrix) { }
+
+        public void deleteSquares(List<int> rowList)
+        {
+            List<Square> temp = new List<Square>();
+            for (int i = 0;i<rowList.Count;i++)
+            {
+                foreach (Square s in SquareList)
+                {
+                    if (s.Y == rowList[i])
+                    {
+                        temp.Add(s);
+                    }
+                }
             }
 
-        public virtual void rotate(int [,] matrix) { }
+            foreach (Square s in temp) {
+                SquareList.Remove(s);
+            }
+        }
     }
+
 }

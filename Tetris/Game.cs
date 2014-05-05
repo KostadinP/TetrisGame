@@ -28,13 +28,14 @@ namespace Tetris
         }
 
         public void addNewForm() {
+            
             activeForm = getRandomForm();
             tetrisForms.Add(activeForm);
         }
 
         private TetrisForm getRandomForm() {
-            Random r = new Random();
-            int k = r.Next(3);
+           Random r = new Random();
+            int k = r.Next(4);
 
             if (k == 0) {
                 return new RowForm(MAXX, MAXY);
@@ -47,8 +48,13 @@ namespace Tetris
             {
                 return new ZForm(MAXX, MAXY);
             }
+            else if (k == 3)
+            {
+                return new GForm(MAXX, MAXY);
+            }
             return null;
 
+            return new RowForm(MAXX , MAXY);
         }
 
         public void moveDown()
@@ -62,12 +68,16 @@ namespace Tetris
                 else
                 {
                     addCoordinateToMatrix(returnBackCoordinates(coordinateList));
+                    RowComplete();
+                    DeleteTetrisForm();
                     addNewForm();
                 }
             }
             else
             {
                 addCoordinateToMatrix(coordinateList);
+                RowComplete();
+                DeleteTetrisForm();
                 addNewForm();
             }
         }
@@ -137,12 +147,43 @@ namespace Tetris
             }
         }
 
-
-
         public void rotate() {
             activeForm.rotate(matrix);
         }
 
+        private List<int> checkForRowComplete() {
+          
+            bool flag = true;
+            List<int> RowList = new List<int>();
+
+            for (int i = 0; i < MAXX; i++) {
+                flag = true;
+                for (int j = 0; j < MAXY; j++) {
+                    if (matrix[i, j] != 1) { flag = false; break; }
+                }
+                if (flag) { RowList.Add(i); }
+            }
+            return RowList;
+        }
+
+        public void RowComplete() {
+            List<int> rowList = checkForRowComplete();
+            if (rowList.Count > 0)
+            {
+                foreach (TetrisForm t in tetrisForms)
+                    t.deleteSquares(rowList);
+            }
+        }
+
+        private void DeleteTetrisForm() {
+            List<TetrisForm> temp = new List<TetrisForm>();
+            foreach (TetrisForm t in tetrisForms) {
+                if (t.SquareListCount == 0) temp.Add(t);
+            }
+            foreach (TetrisForm t in temp){
+                tetrisForms.Remove(t);
+            }
+        }
         
 
 
