@@ -31,12 +31,13 @@
             this.components = new System.ComponentModel.Container();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pnlNextForm = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
             this.mainPanel.BackColor = System.Drawing.Color.White;
-            this.mainPanel.Location = new System.Drawing.Point(88, 13);
+            this.mainPanel.Location = new System.Drawing.Point(116, 12);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(253, 378);
             this.mainPanel.TabIndex = 0;
@@ -47,11 +48,20 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // pnlNextForm
+            // 
+            this.pnlNextForm.BackColor = System.Drawing.Color.White;
+            this.pnlNextForm.Location = new System.Drawing.Point(12, 85);
+            this.pnlNextForm.Name = "pnlNextForm";
+            this.pnlNextForm.Size = new System.Drawing.Size(98, 100);
+            this.pnlNextForm.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 397);
+            this.ClientSize = new System.Drawing.Size(381, 399);
+            this.Controls.Add(this.pnlNextForm);
             this.Controls.Add(this.mainPanel);
             this.Name = "Form1";
             this.Text = "Тетрис";
@@ -64,6 +74,7 @@
 
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel pnlNextForm;
 
 
 
