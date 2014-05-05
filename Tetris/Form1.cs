@@ -20,6 +20,7 @@ namespace Tetris
         private void mainPanel_Paint(object sender, PaintEventArgs e)
         {
             game.draw(e.Graphics);
+            pnlNextForm.Invalidate();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -54,10 +55,18 @@ namespace Tetris
             List<Rectangle> lstRt = new List<Rectangle>();
             foreach (Square sq in game.nextForm.SquareList)
             {
-                Rectangle r = new Rectangle(sq.rectangle.Left/25, sq.rectangle.Top/25, 25, 25);
+                int x = game.nextForm.WestField;
+                int y = game.nextForm.SouthField;
+                Rectangle r = new Rectangle(5 + (sq.X - x) * 25, 5 + (sq.Y) * 25, 20, 20);
                 lstRt.Add(r);
             }
             e.Graphics.FillRectangles(Brushes.Black, lstRt.ToArray());
+        }
+
+        private void btnScores_Click(object sender, EventArgs e)
+        {
+            BestPlayersForm bpf = new BestPlayersForm();
+            bpf.ShowDialog();
         }
     }
 }

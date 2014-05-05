@@ -32,6 +32,7 @@
             this.mainPanel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlNextForm = new System.Windows.Forms.Panel();
+            this.btnScores = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -57,11 +58,22 @@
             this.pnlNextForm.TabIndex = 1;
             this.pnlNextForm.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlNextForm_Paint);
             // 
+            // btnScores
+            // 
+            this.btnScores.Location = new System.Drawing.Point(12, 364);
+            this.btnScores.Name = "btnScores";
+            this.btnScores.Size = new System.Drawing.Size(98, 23);
+            this.btnScores.TabIndex = 2;
+            this.btnScores.Text = "Best results";
+            this.btnScores.UseVisualStyleBackColor = true;
+            this.btnScores.Click += new System.EventHandler(this.btnScores_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(381, 399);
+            this.Controls.Add(this.btnScores);
             this.Controls.Add(this.pnlNextForm);
             this.Controls.Add(this.mainPanel);
             this.Name = "Form1";
@@ -76,6 +88,7 @@
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel pnlNextForm;
+        private System.Windows.Forms.Button btnScores;
 
 
 
