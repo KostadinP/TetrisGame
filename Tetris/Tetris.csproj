@@ -44,6 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BestPlayers.cs" />
+    <Compile Include="BestPlayersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BestPlayersForm.Designer.cs">
+      <DependentUpon>BestPlayersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Coordinate.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -53,6 +60,7 @@
     </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="GForm.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RowForm.cs" />
@@ -60,6 +68,9 @@
     <Compile Include="SquareForm.cs" />
     <Compile Include="TetrisForm.cs" />
     <Compile Include="ZForm.cs" />
+    <EmbeddedResource Include="BestPlayersForm.resx">
+      <DependentUpon>BestPlayersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

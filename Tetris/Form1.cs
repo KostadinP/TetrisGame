@@ -58,11 +58,18 @@ namespace Tetris
 
             foreach (Square sq in game.nextForm.SquareList)
             {
-                x = game.nextForm.WestField;
-                Rectangle r = new Rectangle(5+(sq.X-x)*25, 10+(sq.Y)*25, 20, 20);
+                int x = game.nextForm.WestField;
+                int y = game.nextForm.SouthField;
+                Rectangle r = new Rectangle(5 + (sq.X - x) * 25, 5 + (sq.Y) * 25, 20, 20);
                 lstRt.Add(r);
             }
             e.Graphics.FillRectangles(Brushes.Black, lstRt.ToArray());
+        }
+
+        private void btnScores_Click(object sender, EventArgs e)
+        {
+            BestPlayersForm bpf = new BestPlayersForm();
+            bpf.ShowDialog();
         }
     }
 }
