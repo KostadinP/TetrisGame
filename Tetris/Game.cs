@@ -11,6 +11,7 @@ namespace Tetris
     {
         public List<TetrisForm> tetrisForms;
         public TetrisForm activeForm;
+        public TetrisForm nextForm;
         private int MAXX;
         private int MAXY;
         private int[,] matrix;
@@ -25,11 +26,15 @@ namespace Tetris
                     matrix[i, j] = 0;
                 }
             }
+            activeForm = getRandomForm();
+            tetrisForms.Add(activeForm);
+            nextForm = getRandomForm();
         }
 
         public void addNewForm() {
-            activeForm = getRandomForm();
+            activeForm = nextForm;
             tetrisForms.Add(activeForm);
+            nextForm = getRandomForm();
         }
 
         private TetrisForm getRandomForm() {

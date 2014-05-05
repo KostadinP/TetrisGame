@@ -12,7 +12,6 @@ namespace Tetris
         {
             InitializeComponent();
             game = new Game(15, 10);
-            game.addNewForm();
             timer1.Enabled = true;
             timer1.Start();
         }
@@ -21,6 +20,7 @@ namespace Tetris
         private void mainPanel_Paint(object sender, PaintEventArgs e)
         {
             game.draw(e.Graphics);
+            Graphics g = pnlNextForm.CreateGraphics();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
