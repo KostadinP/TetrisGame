@@ -154,9 +154,17 @@ namespace Tetris
 
             foreach (Square s in SquareList)
             {
-                s.moveDown();
+                s.moveDown(1);
             }
             SouthField += 1;
+        }
+
+        public void moveDownSquares(int position, int spaces) {
+
+            foreach (Square s in SquareList) {
+                if (s.Y <= position) s.moveDown(spaces);
+            }
+        
         }
 
         public virtual void rotate(int[,] matrix) { }

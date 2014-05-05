@@ -58,7 +58,6 @@ namespace Tetris
             }
             return null;
 
-            return new RowForm(MAXX , MAXY);
         }
 
         public void moveDown()
@@ -174,8 +173,32 @@ namespace Tetris
             List<int> rowList = checkForRowComplete();
             if (rowList.Count > 0)
             {
+                int k = rowList.Count;
+                int temp = rowList[0];
                 foreach (TetrisForm t in tetrisForms)
                     t.deleteSquares(rowList);
+                foreach (TetrisForm t in tetrisForms)
+                    t.moveDownSquares(rowList[0] - k, k);
+                
+                moveDownMatrix(rowList[0]-k,k);
+            }
+        }
+
+        private void moveDownMatrix(int position, int spaces) {
+
+            for (int i = position; i > spaces; i--)
+            {
+                for (int j = 0; j < MAXY; j++)
+                {
+                    int a = matrix[i,j];
+                    int b = matrix[i - spaces, j];
+                    matrix[i, j] = matrix[i - spaces, j];
+                }
+            }
+            for (int i = 0; i <= spaces; i++) {
+                for (int j = 0; j < MAXY; j++) {
+                    matrix[i,j] = 0;
+                }
             }
         }
 

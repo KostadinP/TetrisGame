@@ -36,9 +36,9 @@ namespace Tetris
             rectangle = new Rectangle(rectangle.X + 25, rectangle.Y, 20, 20);
         }
 
-        public void moveDown() {
-            this.Y += 1;
-            rectangle = new Rectangle(rectangle.X, rectangle.Y+25, 20, 20);
+        public void moveDown(int k) {
+            this.Y += k;
+            rectangle = new Rectangle(rectangle.X, rectangle.Y+k*25, 20, 20);
         }
 
         public void draw(Graphics g, Brush b) {

@@ -32,6 +32,7 @@
             this.mainPanel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlNextForm = new System.Windows.Forms.Panel();
+   
             this.SuspendLayout();
             // 
             // mainPanel
