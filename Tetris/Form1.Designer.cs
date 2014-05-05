@@ -55,6 +55,7 @@
             this.pnlNextForm.Name = "pnlNextForm";
             this.pnlNextForm.Size = new System.Drawing.Size(98, 100);
             this.pnlNextForm.TabIndex = 1;
+            this.pnlNextForm.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlNextForm_Paint);
             // 
             // Form1
             // 
