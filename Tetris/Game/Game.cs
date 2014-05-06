@@ -12,12 +12,14 @@ namespace Tetris
         public List<TetrisForm> tetrisForms;
         public TetrisForm activeForm;
         public TetrisForm nextForm;
+        public GameState gameState;
         private int MAXX;
         private int MAXY;
-        private int[,] matrix;
+        public int[,] matrix;
 
         public Game(int maxx, int maxy) {
             tetrisForms = new List<TetrisForm>();
+            gameState = new ActiveState(this);
             MAXX = maxx;
             MAXY = maxy;
             matrix = new int[maxx,maxy];
@@ -62,30 +64,10 @@ namespace Tetris
 
         public void moveDown()
         {
-            List<Coordinate> coordinateList = new List<Coordinate>();
-            bool move = activeForm.tryMoveDown(coordinateList);
-            if (move)
-            {              
-                if (checkMoving(coordinateList))
-                    activeForm.moveDown();
-                else
-                {
-                    addCoordinateToMatrix(returnBackCoordinates(coordinateList));
-                    RowComplete();
-                    DeleteTetrisForm();
-                    addNewForm();
-                }
-            }
-            else
-            {
-                addCoordinateToMatrix(coordinateList);
-                RowComplete();
-                DeleteTetrisForm();
-                addNewForm();
-            }
+            gameState.moveDown();
         }
 
-        private List<Coordinate> returnBackCoordinates(List<Coordinate> list) {
+        public List<Coordinate> returnBackCoordinates(List<Coordinate> list) {
             List<Coordinate> result = new List<Coordinate>();
 
             for (int i = 0; i < list.Count; i++) {
@@ -94,7 +76,7 @@ namespace Tetris
             return result;
         }
 
-        private void addCoordinateToMatrix(List<Coordinate> list)
+        public void addCoordinateToMatrix(List<Coordinate> list)
         {
             for (int i = 0; i < list.Count; i++)
             {
@@ -106,30 +88,16 @@ namespace Tetris
 
         public void moveLeft()
         {
-            List<Coordinate> coordinateList = new List<Coordinate>();
-            bool move = activeForm.tryMoveLeft(coordinateList);
-
-            if (move)
-            {
-                if (checkMoving(coordinateList))
-                    activeForm.moveLeft();
-            }
+            gameState.moveLeft();
         }
         
 
         public void moveRight()
         {
-            List<Coordinate> coordinateList = new List<Coordinate>();
-            bool move = activeForm.tryMoveRight(coordinateList);
-
-            if (move)
-            {
-                if (checkMoving(coordinateList))
-                    activeForm.moveRight();
-            }
+            gameState.moveRight();
         }
 
-        private bool checkMoving(List<Coordinate> coordinateList) {
+        public bool checkMoving(List<Coordinate> coordinateList) {
             int x;
             int y;
             for (int i = 0; i < coordinateList.Count; i++)
@@ -144,17 +112,14 @@ namespace Tetris
 
         public void draw(Graphics g)
         {
-            foreach (TetrisForm t in tetrisForms)
-            {
-                t.draw(g);
-            }
+            gameState.draw(g);
         }
 
         public void rotate() {
-            activeForm.rotate(matrix);
+            gameState.rotate();
         }
 
-        private List<int> checkForRowComplete() {
+        public List<int> checkForRowComplete() {
           
             bool flag = true;
             List<int> RowList = new List<int>();
@@ -184,7 +149,7 @@ namespace Tetris
             }
         }
 
-        private void moveDownMatrix(int position, int spaces) {
+        public void moveDownMatrix(int position, int spaces) {
 
             for (int i = position; i > spaces; i--)
             {
@@ -203,7 +168,7 @@ namespace Tetris
             }
         }
 
-        private void DeleteTetrisForm() {
+        public void DeleteTetrisForm() {
             List<TetrisForm> temp = new List<TetrisForm>();
             foreach (TetrisForm t in tetrisForms) {
                 if (t.SquareListCount == 0) temp.Add(t);
@@ -212,10 +177,20 @@ namespace Tetris
                 tetrisForms.Remove(t);
             }
         }
-        
 
-
-
+        public void Pause(System.Windows.Forms.Timer t)
+        {
+            if (gameState as PausedState == null)
+            {
+                gameState = new PausedState(this);
+                t.Stop();
+            }
+            else
+            {
+                t.Start();
+                gameState = new ActiveState(this);
+            }
+        }
     
     }
 }

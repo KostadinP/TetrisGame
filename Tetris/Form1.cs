@@ -72,6 +72,11 @@ namespace Tetris
                 game.rotate();
                 mainPanel.Invalidate();
             }
+            else if (keyData==Keys.P)
+            {
+                game.Pause(timer1);
+                mainPanel.Invalidate();
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
     }
