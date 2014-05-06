@@ -63,11 +63,11 @@
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RowForm.cs" />
-    <Compile Include="Square.cs" />
-    <Compile Include="SquareForm.cs" />
-    <Compile Include="TetrisForm.cs" />
-    <Compile Include="ZForm.cs" />
+    <Compile Include="TetrisForms\RowForm.cs" />
+    <Compile Include="TetrisForms\Square.cs" />
+    <Compile Include="TetrisForms\SquareForm.cs" />
+    <Compile Include="TetrisForms\TetrisForm.cs" />
+    <Compile Include="TetrisForms\ZForm.cs" />
     <EmbeddedResource Include="BestPlayersForm.resx">
       <DependentUpon>BestPlayersForm.cs</DependentUpon>
     </EmbeddedResource>

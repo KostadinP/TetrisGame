@@ -54,7 +54,6 @@ namespace Tetris
         {
             List<Rectangle> lstRt = new List<Rectangle>();
             int i = 1;
-            int x, y;
 
             foreach (Square sq in game.nextForm.SquareList)
             {
