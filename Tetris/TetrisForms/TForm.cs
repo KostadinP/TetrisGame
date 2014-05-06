@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Tetris
 {
-    public class GForm:TetrisForm
+    public class TForm:TetrisForm
     {
-        public GForm(int MAXX, int MAXY) : base(MAXX, MAXY) {
+        public TForm(int MAXX, int MAXY) : base(MAXX, MAXY) {
             chooseType();
         }
- 
-        private void typeOne() {
 
-            SquareList.Add(new Square(4, 0));
-            SquareList.Add(new Square(5, 0));
-            SquareList.Add(new Square(6, 0));
+        private void typeOne()
+        {
+
+            SquareList.Add(new Square(4, 1));
+            SquareList.Add(new Square(5, 1));
             SquareList.Add(new Square(6, 1));
+            SquareList.Add(new Square(5, 0));
 
             this.WestField = 4;
             this.EastField = 6;
@@ -26,26 +26,28 @@ namespace Tetris
             this.Type = 1;
         }
 
-        private void typeTwo() {
+        private void typeTwo()
+        {
 
             SquareList.Add(new Square(5, 0));
             SquareList.Add(new Square(5, 1));
             SquareList.Add(new Square(5, 2));
-            SquareList.Add(new Square(4, 2));
+            SquareList.Add(new Square(6, 1));
 
-            this.WestField = 4;
-            this.EastField = 5;
+            this.WestField = 5;
+            this.EastField = 6;
             this.SouthField = 2;
             this.Type = 3;
         }
 
 
-        private void typeThree() {
+        private void typeThree()
+        {
 
             SquareList.Add(new Square(4, 0));
-            SquareList.Add(new Square(4, 1));
+            SquareList.Add(new Square(5, 0));
+            SquareList.Add(new Square(6, 0));
             SquareList.Add(new Square(5, 1));
-            SquareList.Add(new Square(6, 1));
 
             this.WestField = 4;
             this.EastField = 6;
@@ -53,34 +55,39 @@ namespace Tetris
             this.Type = 3;
         }
 
-        private void typeFour() {
+        private void typeFour()
+        {
 
             SquareList.Add(new Square(5, 0));
-            SquareList.Add(new Square(4, 0));
+            SquareList.Add(new Square(5, 1));
+            SquareList.Add(new Square(5, 2));
             SquareList.Add(new Square(4, 1));
-            SquareList.Add(new Square(4, 2));
 
             this.WestField = 4;
             this.EastField = 5;
             this.SouthField = 2;
             this.Type = 4;
-        
+
         }
 
-        private void chooseType() {
+        private void chooseType()
+        {
             Random r = new Random();
-            int k = r.Next(1,5);
-            if (k == 1) {
+            int k = r.Next(1, 5);
+            if (k == 1)
+            {
                 typeOne();
             }
-            else if (k == 2) {
+            else if (k == 2)
+            {
                 typeTwo();
             }
-            else if (k == 3) {
+            else if (k == 3)
+            {
                 typeThree();
             }
             else { typeFour(); }
-        
+
         }
 
         public override void rotate(int[,] matrix)
@@ -112,36 +119,13 @@ namespace Tetris
         }
 
 
-        public bool changeToTypeOne(int[,] matrix) {
+        public bool changeToTypeOne(int[,] matrix)
+        {
             List<Square> list = new List<Square>();
 
-            list.Add(new Square(this.EastField, this.SouthField-1));
-            list.Add(new Square(this.EastField, this.SouthField));
-            list.Add(new Square(this.EastField-1, this.SouthField-1 ));
-            list.Add(new Square(this.EastField - 2, this.SouthField-1 ));
-
-            foreach (Square s in list)
-            {
-                try
-                {
-                    if (matrix[s.Y, s.X] == 1) return false;
-                }
-                catch (IndexOutOfRangeException e)
-                {
-                    return false;
-                }
-            }
-            this.SquareList = list;
-            this.WestField = this.EastField - 2;
-            return true;
-        }
-
-        public bool changeToTypeTwo(int [,]matrix) {
-            List<Square> list = new List<Square>();
-
-            list.Add(new Square(this.EastField, this.SouthField-2));
-            list.Add(new Square(this.EastField, this.SouthField-1));
-            list.Add(new Square(this.EastField, this.SouthField));
+            list.Add(new Square(this.EastField+1, this.SouthField));
+            list.Add(new Square(this.EastField, this.SouthField ));
+            list.Add(new Square(this.EastField, this.SouthField - 1));
             list.Add(new Square(this.EastField - 1, this.SouthField));
 
             foreach (Square s in list)
@@ -156,42 +140,19 @@ namespace Tetris
                 }
             }
             this.SquareList = list;
-            this.WestField = this.EastField-1;
+            this.WestField = this.EastField - 1;
+            this.EastField += 1;
             return true;
         }
 
-        public bool changeToTypeThree(int [,]matrix) {
-            List<Square> list = new List<Square>();
-
-            list.Add(new Square(this.EastField, this.SouthField));
-            list.Add(new Square(this.EastField-1, this.SouthField));
-            list.Add(new Square(this.EastField-2, this.SouthField));
-            list.Add(new Square(this.EastField - 2, this.SouthField-1));
-
-            foreach (Square s in list)
-            {
-                try
-                {
-                    if (matrix[s.Y, s.X] == 1) return false;
-                }
-                catch (IndexOutOfRangeException e)
-                {
-                    return false;
-                }
-            }
-            this.SquareList = list;
-            this.WestField = this.EastField - 2;
-            return true;
-        }
-
-        public bool changeToTypeFour(int[,] matrix)
+        public bool changeToTypeTwo(int[,] matrix)
         {
             List<Square> list = new List<Square>();
 
-            list.Add(new Square(this.EastField, this.SouthField-2));
-            list.Add(new Square(this.EastField-1, this.SouthField-2));
-            list.Add(new Square(this.EastField-1, this.SouthField-1));
             list.Add(new Square(this.EastField-1, this.SouthField ));
+            list.Add(new Square(this.EastField-1, this.SouthField - 1));
+            list.Add(new Square(this.EastField, this.SouthField - 1));
+            list.Add(new Square(this.EastField-1, this.SouthField-2));
 
             foreach (Square s in list)
             {
@@ -209,6 +170,55 @@ namespace Tetris
             return true;
         }
 
-        
+        public bool changeToTypeThree(int[,] matrix)
+        {
+            List<Square> list = new List<Square>();
+
+            list.Add(new Square(this.EastField, this.SouthField - 1));
+            list.Add(new Square(this.EastField-1, this.SouthField-1));
+            list.Add(new Square(this.EastField-1, this.SouthField));
+            list.Add(new Square(this.EastField - 2, this.SouthField-1));
+
+            foreach (Square s in list)
+            {
+                try
+                {
+                    if (matrix[s.Y, s.X] == 1) return false;
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    return false;
+                }
+            }
+            this.SquareList = list;
+            this.WestField = this.EastField - 2;
+            this.EastField -= 1;
+            return true;
+        }
+
+        public bool changeToTypeFour(int[,] matrix)
+        {
+            List<Square> list = new List<Square>();
+
+            list.Add(new Square(this.EastField , this.SouthField - 2));
+            list.Add(new Square(this.EastField , this.SouthField - 1));
+            list.Add(new Square(this.EastField - 1, this.SouthField-1));
+            list.Add(new Square(this.EastField, this.SouthField));
+
+            foreach (Square s in list)
+            {
+                try
+                {
+                    if (matrix[s.Y, s.X] == 1) return false;
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    return false;
+                }
+            }
+            this.SquareList = list;
+            this.WestField = this.EastField - 1;            
+            return true;
+        }
     }
 }

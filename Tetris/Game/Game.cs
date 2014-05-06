@@ -37,11 +37,12 @@ namespace Tetris
             activeForm = nextForm;
             tetrisForms.Add(activeForm);
             nextForm = getRandomForm();
+            
         }
 
         private TetrisForm getRandomForm() {
             Random r = new Random();
-            int k = r.Next(4);
+            int k = r.Next(7);
 
             if (k == 0) {
                 return new RowForm(MAXX, MAXY);
@@ -58,8 +59,16 @@ namespace Tetris
             {
                 return new GForm(MAXX, MAXY);
             }
+            else if (k == 4) {
+                return new CForm(MAXX, MAXY);
+            }
+            else if (k == 5) {
+                return new LForm(MAXX, MAXY);
+            }
+            else if (k == 6) {
+                return new TForm(MAXX, MAXY);
+            }
             return null;
-
         }
 
         public void moveDown()
