@@ -178,9 +178,9 @@ namespace Tetris
                 foreach (TetrisForm t in tetrisForms)
                     t.deleteSquares(rowList);
                 foreach (TetrisForm t in tetrisForms)
-                    t.moveDownSquares(rowList[0] - k, k);
+                    t.moveDownSquares(rowList[rowList.Count-1], k);
                 
-                moveDownMatrix(rowList[0]-k,k);
+                moveDownMatrix(rowList[rowList.Count-1],k);
             }
         }
 
@@ -190,9 +190,10 @@ namespace Tetris
             {
                 for (int j = 0; j < MAXY; j++)
                 {
-                    int a = matrix[i,j];
+                    int a = matrix[i, j];
                     int b = matrix[i - spaces, j];
                     matrix[i, j] = matrix[i - spaces, j];
+                    matrix[i - spaces, j] = 0;
                 }
             }
             for (int i = 0; i <= spaces; i++) {
