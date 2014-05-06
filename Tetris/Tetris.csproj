@@ -44,11 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BestPlayers.cs" />
-    <Compile Include="BestPlayersForm.cs">
+    <Compile Include="Game\GameState.cs" />
+    <Compile Include="Game\PausedState.cs" />
+    <Compile Include="Players\BestPlayers.cs" />
+    <Compile Include="Players\BestPlayersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BestPlayersForm.Designer.cs">
+    <Compile Include="Players\BestPlayersForm.Designer.cs">
       <DependentUpon>BestPlayersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Coordinate.cs" />
@@ -58,9 +60,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Game.cs" />
-    <Compile Include="GForm.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="TetrisForms\GForm.cs" />
+    <Compile Include="Players\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TetrisForms\RowForm.cs" />
@@ -68,7 +70,7 @@
     <Compile Include="TetrisForms\SquareForm.cs" />
     <Compile Include="TetrisForms\TetrisForm.cs" />
     <Compile Include="TetrisForms\ZForm.cs" />
-    <EmbeddedResource Include="BestPlayersForm.resx">
+    <EmbeddedResource Include="Players\BestPlayersForm.resx">
       <DependentUpon>BestPlayersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
