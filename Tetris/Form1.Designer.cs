@@ -76,9 +76,9 @@
             this.Controls.Add(this.btnScores);
             this.Controls.Add(this.pnlNextForm);
             this.Controls.Add(this.mainPanel);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Тетрис";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
 
         }

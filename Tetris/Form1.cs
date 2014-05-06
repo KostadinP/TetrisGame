@@ -23,27 +23,6 @@ namespace Tetris
             pnlNextForm.Invalidate();
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode.Equals(Keys.Down)) {
-                game.moveDown();
-                mainPanel.Invalidate();
-            }
-            else if (e.KeyCode.Equals(Keys.Left)) {
-                game.moveLeft();
-                mainPanel.Invalidate();
-            }
-            else if (e.KeyCode.Equals(Keys.Right)) {
-                game.moveRight();
-                mainPanel.Invalidate();
-            }
-            else if (e.KeyCode.Equals(Keys.Up)) {
-                game.rotate();
-                mainPanel.Invalidate();
-            }
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             game.moveDown();
@@ -69,6 +48,31 @@ namespace Tetris
         {
             BestPlayersForm bpf = new BestPlayersForm();
             bpf.ShowDialog();
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+
+            if (keyData==Keys.Down)
+            {
+                game.moveDown();
+                mainPanel.Invalidate();
+            }
+            else if (keyData==Keys.Left)
+            {
+                game.moveLeft();
+                mainPanel.Invalidate();
+            }
+            else if (keyData==Keys.Right)
+            {
+                game.moveRight();
+                mainPanel.Invalidate();
+            }
+            else if (keyData==Keys.Up)
+            {
+                game.rotate();
+                mainPanel.Invalidate();
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
