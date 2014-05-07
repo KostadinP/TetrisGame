@@ -14,5 +14,11 @@ namespace Tetris
             player.Stream = Properties.Resources.Splat;
             player.Play();
         }
+        public static void GameOverSound()
+        {
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+            player.Stream = Properties.Resources.SadTrombone;
+            player.Play();
+        }
     }
 }

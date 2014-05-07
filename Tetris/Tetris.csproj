@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game\ActiveState.cs" />
+    <Compile Include="Game\GameOverState.cs" />
     <Compile Include="Game\GameState.cs" />
     <Compile Include="Game\PausedState.cs" />
     <Compile Include="Game\PreGameState.cs" />
@@ -113,6 +114,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Splat-SoundBible.com-1826190667.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GameOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SadTrombone.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

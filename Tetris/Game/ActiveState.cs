@@ -8,7 +8,7 @@ namespace Tetris
 {
     class ActiveState : GameState
     {
-        Game game;
+        private Game game;
 
         public ActiveState(Game g)
         {
