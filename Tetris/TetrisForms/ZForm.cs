@@ -32,13 +32,13 @@ namespace Tetris
         private void typeTwo() {
 
             SquareList.Add(new Square(4, 0));
-            SquareList.Add(new Square(5, 0));
+            SquareList.Add(new Square(4, 1));
             SquareList.Add(new Square(5, 1));
-            SquareList.Add(new Square(6, 1));
+            SquareList.Add(new Square(5, 2));
 
             this.WestField = 4;
-            this.EastField = 6;
-            this.SouthField = 1;
+            this.EastField = 5;
+            this.SouthField = 2;
             this.Type = 2;
         }
 
@@ -58,10 +58,10 @@ namespace Tetris
         private bool changeToTypeOne(int [,]matrix) {
             List<Square> list = new List<Square>();
 
-                list.Add(new Square(this.WestField, this.SouthField));
-                list.Add(new Square(this.WestField+1, this.SouthField));
-                list.Add(new Square(this.WestField+1, this.SouthField-1));
-                list.Add(new Square(this.EastField, this.SouthField-1));
+                list.Add(new Square(this.EastField, this.SouthField-2));
+                list.Add(new Square(this.WestField, this.SouthField-2));
+                list.Add(new Square(this.WestField, this.SouthField-1));
+                list.Add(new Square(this.WestField-1, this.SouthField-1));
 
                 foreach (Square s in list)
                 {
@@ -74,6 +74,8 @@ namespace Tetris
                         return false;
                     }
                 }
+                this.WestField -= 1;
+                this.SouthField -= 1;
                 this.SquareList = list;
                 return true;
         }
@@ -81,10 +83,10 @@ namespace Tetris
         private bool changeToTypeTwo(int [,] matrix) {
             List<Square> list = new List<Square>();
 
-                list.Add(new Square(this.WestField, this.SouthField-1));
-                list.Add(new Square(this.WestField + 1, this.SouthField-1));
-                list.Add(new Square(this.WestField + 1, this.SouthField ));
+                list.Add(new Square(this.EastField-1, this.SouthField-1));
+                list.Add(new Square(this.EastField-1, this.SouthField));
                 list.Add(new Square(this.EastField, this.SouthField ));
+                list.Add(new Square(this.EastField, this.SouthField +1));
 
                 foreach (Square s in list)
                 {
@@ -97,6 +99,8 @@ namespace Tetris
                         return false;
                     }
                 }
+                this.WestField += 1;
+                this.SouthField += 1;
                 this.SquareList = list;
                 return true;
         }

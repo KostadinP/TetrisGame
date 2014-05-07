@@ -12,6 +12,7 @@ namespace Tetris
         {
             InitializeComponent();
             game = new Game(15, 10);
+            this.DoubleBuffered = true;
             timer1.Enabled = true;
             timer1.Start();
         }
