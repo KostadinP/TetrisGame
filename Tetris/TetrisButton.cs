@@ -11,7 +11,7 @@ namespace Tetris
     public class TetrisButton: Button
     {
 
-     private static Font _normalFont = new Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        private static Font _normalFont = new Font("Hobo Std", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
     private static Color _back = System.Drawing.Color.Gray;
     private static Color _border = System.Drawing.Color.Black;
