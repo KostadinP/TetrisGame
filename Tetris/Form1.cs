@@ -13,8 +13,6 @@ namespace Tetris
             InitializeComponent();
             game = new Game(15, 10,timer1);
             this.DoubleBuffered = true;
-            //button1.Click += (sender, e) => textbox1.Focus();
-            
         }
 
 
@@ -27,6 +25,12 @@ namespace Tetris
         private void timer1_Tick(object sender, EventArgs e)
         {
             game.moveDown();
+            if (game.HasNewPoints)
+            {
+                ScoreLbl.Text = game.player.Points.ToString();
+                String s = game.player.Points.ToString();
+                //game.HasNewPoints = false;
+            }
             mainPanel.Invalidate();
         }
 

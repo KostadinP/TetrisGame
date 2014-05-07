@@ -28,6 +28,7 @@ namespace Tetris
                     game.RowComplete();
                     game.DeleteTetrisForm();
                     game.addNewForm();
+                    game.changePoints(Game.GamePoints.Fallen, 0);
                 }
             }
             else
@@ -36,6 +37,7 @@ namespace Tetris
                 game.RowComplete();
                 game.DeleteTetrisForm();
                 game.addNewForm();
+                game.changePoints(Game.GamePoints.Fallen, 0);
             }
         }
 

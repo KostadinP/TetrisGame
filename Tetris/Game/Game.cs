@@ -9,16 +9,17 @@ namespace Tetris
 {
     public class Game
     {
-        private enum GamePoints
+        public enum GamePoints
         {
             Fallen,
             Crushed
         }
-        private Player player;
+        public Player player;
         public List<TetrisForm> tetrisForms;
         public TetrisForm activeForm;
         public TetrisForm nextForm;
         public GameState gameState;
+        public bool HasNewPoints { get; set; }
         private int MAXX;
         private int MAXY;
         private System.Windows.Forms.Timer timer;
@@ -35,6 +36,7 @@ namespace Tetris
             activeForm = getRandomForm();
             tetrisForms.Add(activeForm);
             nextForm = getRandomForm();
+            HasNewPoints = true;
             gameState = new ActiveState(this);
             timer.Start();
         }
@@ -53,15 +55,18 @@ namespace Tetris
                 }
             }
         }
-        private void changePoints(GamePoints gp)
+        public void changePoints(GamePoints gp, int count)
         {
             if (gp==GamePoints.Fallen)
             {
                 player.Points += (5*player.Level);
+                int y = (5 * player.Level);
+                HasNewPoints = true;
             }
             else
             {
-                player.Points += (50 * player.Level);
+                player.Points += (50 * player.Level * count);
+                HasNewPoints = true;
             }
         }
         public void addNewForm() {
@@ -186,6 +191,7 @@ namespace Tetris
                     t.moveDownSquares(rowList[rowList.Count-1], k);
                 
                 moveDownMatrix(rowList[rowList.Count-1],k);
+                changePoints(GamePoints.Crushed, rowList.Count);
             }
         }
 
