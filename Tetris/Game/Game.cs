@@ -189,12 +189,12 @@ namespace Tetris
 
         public void Pause(System.Windows.Forms.Timer t)
         {
-            if (gameState as PausedState == null)
+            if (gameState as ActiveState != null)
             {
                 gameState = new PausedState(this);
                 t.Stop();
             }
-            else
+            else if (gameState as PausedState!=null)
             {
                 t.Start();
                 gameState = new ActiveState(this);

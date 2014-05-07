@@ -47,6 +47,7 @@
     <Compile Include="Game\ActiveState.cs" />
     <Compile Include="Game\GameState.cs" />
     <Compile Include="Game\PausedState.cs" />
+    <Compile Include="Game\PreGameState.cs" />
     <Compile Include="Players\BestPlayers.cs" />
     <Compile Include="Players\BestPlayersForm.cs">
       <SubType>Form</SubType>
