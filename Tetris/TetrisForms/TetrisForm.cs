@@ -34,11 +34,12 @@ namespace Tetris
         private void pickColor()
         {
             Random r = new Random();
-            int k = r.Next(4);
+            int k = r.Next(5);
             if (k == 0) { this.Color = Brushes.Red; }
-            if (k == 1) { this.Color = Brushes.Blue; }
-            if (k == 2) { this.Color = Brushes.Yellow; }
-            if (k == 3) { this.Color = Brushes.Green; }
+            else if (k == 1) { this.Color = Brushes.Blue; }
+            else if (k == 2) { this.Color = Brushes.DeepPink; }
+            else if (k == 3) { this.Color = Brushes.Green; }
+            else if (k == 4) { this.Color = Brushes.Purple; }
         }
 
         public void draw(Graphics g)

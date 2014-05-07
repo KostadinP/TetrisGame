@@ -73,6 +73,9 @@ namespace Tetris
             activeForm = nextForm;
             tetrisForms.Add(activeForm);
             nextForm = getRandomForm();
+            if (isGameOver()) {
+                gameOver();
+            }
             
         }
 
@@ -183,16 +186,17 @@ namespace Tetris
             List<int> rowList = checkForRowComplete();
             if (rowList.Count > 0)
             {
-                int k = rowList.Count;
+                int count = rowList.Count;
                 int temp = rowList[0];
                 foreach (TetrisForm t in tetrisForms)
                     t.deleteSquares(rowList);
                 foreach (TetrisForm t in tetrisForms)
-                    t.moveDownSquares(rowList[rowList.Count-1], k);
+                    t.moveDownSquares(rowList[rowList.Count-1], count);
                 
-                moveDownMatrix(rowList[rowList.Count-1],k);
-                changePoints(GamePoints.Crushed, rowList.Count);
+                moveDownMatrix(rowList[rowList.Count-1],count);
+                changePoints(GamePoints.Crushed, count);
                 Sounds.SplashPlay();
+                player.Rows += count;
             }
         }
 
@@ -223,6 +227,25 @@ namespace Tetris
             foreach (TetrisForm t in temp){
                 tetrisForms.Remove(t);
             }
+        }
+
+        private bool isGameOver() {
+            List<Square> squareList = activeForm.SquareList.Where(e => e.Y == activeForm.SouthField).ToList();
+            foreach (Square s in squareList) {
+                 for(int i=activeForm.WestField;i<activeForm.EastField;i++){
+                    if (matrix[s.Y + 1, i] == 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+        return false;
+        }
+        
+
+        private void gameOver() {
+            timer.Stop();
+            gameState = new GameOverState(this);
         }
 
         public void Pause()

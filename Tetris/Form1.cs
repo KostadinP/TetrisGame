@@ -8,17 +8,15 @@ namespace Tetris
     public partial class Form1 : Form
     {
         private Game game;
-        private int MaxTimerSecounds { get; set; }
-        private int CutTime { get; set; }
+        public static int MaxTime = 1500;
+        public static int CutTime = 30;
 
         public Form1()
         {
             InitializeComponent();
             game = new Game(15, 10,timer1);
-            MaxTimerSecounds = 1500;
-            CutTime = 200;
             this.DoubleBuffered = true;
-            
+            timer1.Interval = MaxTime;
         }
 
 
@@ -35,18 +33,15 @@ namespace Tetris
             {
                 ScoreLbl.Text = game.player.Points.ToString();
                 LevelLbl.Text = game.player.Level.ToString();
+                RowsLbl.Text = game.player.Rows.ToString();
                 if (game.player.NewLevel)
                 {
-                    timer1.Interval -= getTimerInteval();
+                    timer1.Interval -= CutTime;
                     game.player.NewLevel = false;
                 }
                 game.HasNewPoints = false;
             }
             mainPanel.Invalidate();
-        }
-
-        private int getTimerInteval() { 
-            return  CutTime / game.player.Level;
         }
 
         private void pnlNextForm_Paint(object sender, PaintEventArgs e)

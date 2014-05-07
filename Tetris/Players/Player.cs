@@ -9,17 +9,28 @@ namespace Tetris
     public class Player
     {
         public String Name { get; set; }
-        private int points;
-        public int Points { get { return points; } set { points = value; if (points / 500 != 0) { int t = points / 500 + 1; if (t > Level) { NewLevel = true; Level = t; } } } }
+        public int Points { get; set; }
         public DateTime Date { get; set; }
         public int Level { get; set; }
         public bool NewLevel { get; set; }
+        private int rows;
+        public int Rows 
+        { get 
+          { 
+            return rows;
+          } 
+          set 
+          { rows = value;
+          if (rows / 10 != 0) { Level = rows / 10 + 1; NewLevel = true; }
+          } 
+        }
 
         public Player()
         {
             NewLevel = false;
             Points = 0;
             Level = 1;
+            Rows = 0;
 
         }
     }
