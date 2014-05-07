@@ -9,6 +9,12 @@ namespace Tetris
 {
     public class Game
     {
+        private enum GamePoints
+        {
+            Fallen,
+            Crushed
+        }
+        private Player player;
         public List<TetrisForm> tetrisForms;
         public TetrisForm activeForm;
         public TetrisForm nextForm;
@@ -25,6 +31,7 @@ namespace Tetris
         }
         public void newGame()
         {
+            resetGame(MAXX,MAXY);
             activeForm = getRandomForm();
             tetrisForms.Add(activeForm);
             nextForm = getRandomForm();
@@ -33,6 +40,7 @@ namespace Tetris
         }
         private void resetGame(int maxx, int maxy)
         {
+            player = new Player();
             tetrisForms = new List<TetrisForm>();
             MAXX = maxx;
             MAXY = maxy;
@@ -45,7 +53,17 @@ namespace Tetris
                 }
             }
         }
-
+        private void changePoints(GamePoints gp)
+        {
+            if (gp==GamePoints.Fallen)
+            {
+                player.Points += (5*player.Level);
+            }
+            else
+            {
+                player.Points += (50 * player.Level);
+            }
+        }
         public void addNewForm() {
             activeForm = nextForm;
             tetrisForms.Add(activeForm);

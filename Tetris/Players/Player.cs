@@ -11,12 +11,11 @@ namespace Tetris
         public String Name { get; set; }
         public int Points { get; set; }
         public DateTime Date { get; set; }
+        public int Level { get; set; }
 
-        public Player(String name, int points)
+        public Player()
         {
-            Name = name;
-            Points = points;
-            Date = DateTime.Now;
+            Points = 0;
         }
     }
 }

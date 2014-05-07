@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -126,7 +127,7 @@ namespace Tetris
                 {
                     if (matrix[s.Y, s.X] == 1) return false;
                 }
-                catch (IndexOutOfRangeException e)
+                catch (IndexOutOfRangeException)
                 {
                     return false;
                 }
@@ -152,6 +153,7 @@ namespace Tetris
                 }
                 catch (IndexOutOfRangeException e)
                 {
+                    Debug.WriteLine(e.Message);
                     return false;
                 }
             }
@@ -174,7 +176,7 @@ namespace Tetris
                 {
                     if (matrix[s.Y, s.X] == 1) return false;
                 }
-                catch (IndexOutOfRangeException e)
+                catch (IndexOutOfRangeException)
                 {
                     return false;
                 }
@@ -201,6 +203,7 @@ namespace Tetris
                 }
                 catch (IndexOutOfRangeException e)
                 {
+                    Debug.WriteLine(e.Message);
                     return false;
                 }
             }

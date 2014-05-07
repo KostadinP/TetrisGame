@@ -33,7 +33,6 @@ namespace Tetris
             if (game.nextForm != null)
             {
                 List<Rectangle> lstRt = new List<Rectangle>();
-                int i = 1;
 
                 foreach (Square sq in game.nextForm.SquareList)
                 {
@@ -58,21 +57,25 @@ namespace Tetris
             {
                 game.moveDown();
                 mainPanel.Invalidate();
+                return true;
             }
             else if (keyData==Keys.Left)
             {
                 game.moveLeft();
                 mainPanel.Invalidate();
+                return true;
             }
             else if (keyData==Keys.Right)
             {
                 game.moveRight();
                 mainPanel.Invalidate();
+                return true;
             }
             else if (keyData==Keys.Up)
             {
                 game.rotate();
                 mainPanel.Invalidate();
+                return true;
             }
             else if (keyData==Keys.P)
             {
