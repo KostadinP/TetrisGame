@@ -16,6 +16,7 @@ namespace Tetris
         public Player()
         {
             Points = 0;
+            Level = 1;
         }
     }
 }
