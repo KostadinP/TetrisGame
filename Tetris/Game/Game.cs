@@ -15,22 +15,35 @@ namespace Tetris
         public GameState gameState;
         private int MAXX;
         private int MAXY;
+        private System.Windows.Forms.Timer timer;
         public int[,] matrix;
 
-        public Game(int maxx, int maxy) {
-            tetrisForms = new List<TetrisForm>();
-            gameState = new ActiveState(this);
-            MAXX = maxx;
-            MAXY = maxy;
-            matrix = new int[maxx,maxy];
-            for (int i = 0; i < maxx; i++) {
-                for (int j = 0; j < maxy; j++) {
-                    matrix[i, j] = 0;
-                }
-            }
+        public Game(int maxx, int maxy, System.Windows.Forms.Timer t) {
+            gameState = new PreGameState(this);
+            resetGame(maxx,maxy);
+            timer = t;
+        }
+        public void newGame()
+        {
             activeForm = getRandomForm();
             tetrisForms.Add(activeForm);
             nextForm = getRandomForm();
+            gameState = new ActiveState(this);
+            timer.Start();
+        }
+        private void resetGame(int maxx, int maxy)
+        {
+            tetrisForms = new List<TetrisForm>();
+            MAXX = maxx;
+            MAXY = maxy;
+            matrix = new int[maxx, maxy];
+            for (int i = 0; i < maxx; i++)
+            {
+                for (int j = 0; j < maxy; j++)
+                {
+                    matrix[i, j] = 0;
+                }
+            }
         }
 
         public void addNewForm() {
@@ -187,16 +200,16 @@ namespace Tetris
             }
         }
 
-        public void Pause(System.Windows.Forms.Timer t)
+        public void Pause()
         {
             if (gameState as ActiveState != null)
             {
                 gameState = new PausedState(this);
-                t.Stop();
+                timer.Stop();
             }
             else if (gameState as PausedState!=null)
             {
-                t.Start();
+                timer.Start();
                 gameState = new ActiveState(this);
             }
         }
