@@ -63,6 +63,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Game\Game.cs" />
+    <Compile Include="TetrisButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TetrisForms\CForm.cs" />
     <Compile Include="TetrisForms\GForm.cs" />
     <Compile Include="Players\Player.cs" />

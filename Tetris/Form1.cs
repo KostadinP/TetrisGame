@@ -13,6 +13,8 @@ namespace Tetris
             InitializeComponent();
             game = new Game(15, 10,timer1);
             this.DoubleBuffered = true;
+            //button1.Click += (sender, e) => textbox1.Focus();
+            
         }
 
 

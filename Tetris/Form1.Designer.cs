@@ -32,8 +32,8 @@
             this.mainPanel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlNextForm = new System.Windows.Forms.Panel();
-            this.btnScores = new System.Windows.Forms.Button();
-            this.btnNewGame = new System.Windows.Forms.Button();
+            this.btnScores = new Tetris.TetrisButton();
+            this.btnNewGame = new Tetris.TetrisButton();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -61,20 +61,36 @@
             // 
             // btnScores
             // 
+            this.btnScores.BackColor = System.Drawing.Color.Black;
+            this.btnScores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnScores.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScores.ForeColor = System.Drawing.Color.White;
             this.btnScores.Location = new System.Drawing.Point(12, 364);
+            this.btnScores.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.btnScores.MinimumSize = new System.Drawing.Size(100, 30);
             this.btnScores.Name = "btnScores";
-            this.btnScores.Size = new System.Drawing.Size(98, 23);
+            this.btnScores.Padding = new System.Windows.Forms.Padding(3);
+            this.btnScores.Size = new System.Drawing.Size(100, 30);
             this.btnScores.TabIndex = 2;
+            this.btnScores.TabStop = false;
             this.btnScores.Text = "Best results";
             this.btnScores.UseVisualStyleBackColor = true;
             this.btnScores.Click += new System.EventHandler(this.btnScores_Click);
             // 
             // btnNewGame
             // 
-            this.btnNewGame.Location = new System.Drawing.Point(12, 335);
+            this.btnNewGame.BackColor = System.Drawing.Color.Black;
+            this.btnNewGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewGame.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewGame.ForeColor = System.Drawing.Color.White;
+            this.btnNewGame.Location = new System.Drawing.Point(12, 325);
+            this.btnNewGame.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.btnNewGame.MinimumSize = new System.Drawing.Size(100, 30);
             this.btnNewGame.Name = "btnNewGame";
-            this.btnNewGame.Size = new System.Drawing.Size(98, 23);
+            this.btnNewGame.Padding = new System.Windows.Forms.Padding(3);
+            this.btnNewGame.Size = new System.Drawing.Size(100, 30);
             this.btnNewGame.TabIndex = 3;
+            this.btnNewGame.TabStop = false;
             this.btnNewGame.Text = "New game";
             this.btnNewGame.UseVisualStyleBackColor = true;
             this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
@@ -100,8 +116,8 @@
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel pnlNextForm;
-        private System.Windows.Forms.Button btnScores;
-        private System.Windows.Forms.Button btnNewGame;
+        private TetrisButton btnScores;
+        private TetrisButton btnNewGame;
 
 
 
