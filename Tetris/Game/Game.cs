@@ -192,6 +192,7 @@ namespace Tetris
                 
                 moveDownMatrix(rowList[rowList.Count-1],k);
                 changePoints(GamePoints.Crushed, rowList.Count);
+                Sounds.SplashPlay();
             }
         }
 
