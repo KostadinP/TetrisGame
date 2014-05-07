@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mainPanel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlNextForm = new System.Windows.Forms.Panel();
@@ -115,7 +116,7 @@
             this.btnNewGame.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.btnNewGame.MinimumSize = new System.Drawing.Size(100, 30);
             this.btnNewGame.Name = "btnNewGame";
-            this.btnNewGame.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.btnNewGame.Padding = new System.Windows.Forms.Padding(3);
             this.btnNewGame.Size = new System.Drawing.Size(120, 34);
             this.btnNewGame.TabIndex = 3;
             this.btnNewGame.TabStop = false;
@@ -133,7 +134,7 @@
             this.btnScores.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.btnScores.MinimumSize = new System.Drawing.Size(100, 30);
             this.btnScores.Name = "btnScores";
-            this.btnScores.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.btnScores.Padding = new System.Windows.Forms.Padding(3);
             this.btnScores.Size = new System.Drawing.Size(120, 30);
             this.btnScores.TabIndex = 2;
             this.btnScores.TabStop = false;
@@ -176,6 +177,7 @@
             this.Controls.Add(this.btnScores);
             this.Controls.Add(this.pnlNextForm);
             this.Controls.Add(this.mainPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Tetris Game";
