@@ -19,9 +19,15 @@ namespace Tetris
           { 
             return rows;
           } 
-          set 
-          { rows = value;
-          if (rows / 10 != 0) { Level = rows / 10 + 1; NewLevel = true; }
+          set
+            {
+              rows = value;
+              if (rows / 10 != 0) { 
+                  int temp = rows / 10 + 1; 
+                  if (temp > Level) {
+                      NewLevel = true; Level = temp; 
+                  } 
+              }
           } 
         }
 

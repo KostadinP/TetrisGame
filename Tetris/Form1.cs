@@ -8,7 +8,7 @@ namespace Tetris
     public partial class Form1 : Form
     {
         private Game game;
-        public static int MaxTime = 1500;
+        public static int MaxTime = 1200;
         public static int CutTime = 30;
 
         public Form1()
@@ -37,6 +37,7 @@ namespace Tetris
                 if (game.player.NewLevel)
                 {
                     timer1.Interval -= CutTime;
+                    Sounds.LevelUpSound();
                     game.player.NewLevel = false;
                 }
                 game.HasNewPoints = false;
