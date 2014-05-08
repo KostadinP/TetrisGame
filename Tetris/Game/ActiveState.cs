@@ -29,6 +29,7 @@ namespace Tetris
                     game.DeleteTetrisForm();
                     game.addNewForm();
                     game.changePoints(Game.GamePoints.Fallen, 0);
+                    
                 }
             }
             else

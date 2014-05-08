@@ -24,10 +24,12 @@ namespace Tetris
         private int MAXY;
         private System.Windows.Forms.Timer timer;
         public int[,] matrix;
+        public Sounds sound;
 
         public Game(int maxx, int maxy, System.Windows.Forms.Timer t) {
             gameState = new PreGameState(this);
             resetGame(maxx,maxy);
+            sound = new Sounds();
             timer = t;
         }
         public void newGame()
@@ -195,9 +197,10 @@ namespace Tetris
                 
                 moveDownMatrix(rowList[rowList.Count-1],count);
                 changePoints(GamePoints.Crushed, count);
-                Sounds.SplashPlay();
                 player.Rows += count;
+                sound.SplashPlay();
             }
+            else { sound.TapSound(); }
         }
 
         public void moveDownMatrix(int position, int spaces) {

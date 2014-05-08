@@ -59,10 +59,10 @@ namespace Tetris
         private bool changeToTypeOne(int [,]matrix) {
             List<Square> list = new List<Square>();
 
-                list.Add(new Square(this.EastField, this.SouthField-2));
-                list.Add(new Square(this.WestField, this.SouthField-2));
-                list.Add(new Square(this.WestField, this.SouthField-1));
-                list.Add(new Square(this.WestField-1, this.SouthField-1));
+                list.Add(new Square(this.EastField-1, this.SouthField-2));
+                list.Add(new Square(this.EastField-1, this.SouthField-1));
+                list.Add(new Square(this.EastField, this.SouthField-1));
+                list.Add(new Square(this.EastField, this.SouthField));
 
                 foreach (Square s in list)
                 {
@@ -76,8 +76,7 @@ namespace Tetris
                         return false;
                     }
                 }
-                this.WestField -= 1;
-                this.SouthField -= 1;
+                this.WestField =this.EastField -1;
                 this.SquareList = list;
                 return true;
         }
@@ -85,10 +84,10 @@ namespace Tetris
         private bool changeToTypeTwo(int [,] matrix) {
             List<Square> list = new List<Square>();
 
+                list.Add(new Square(this.EastField, this.SouthField-1));
                 list.Add(new Square(this.EastField-1, this.SouthField-1));
-                list.Add(new Square(this.EastField-1, this.SouthField));
-                list.Add(new Square(this.EastField, this.SouthField ));
-                list.Add(new Square(this.EastField, this.SouthField +1));
+                list.Add(new Square(this.EastField-1, this.SouthField ));
+                list.Add(new Square(this.EastField-2, this.SouthField ));
 
                 foreach (Square s in list)
                 {
@@ -102,8 +101,7 @@ namespace Tetris
                         return false;
                     }
                 }
-                this.WestField += 1;
-                this.SouthField += 1;
+                this.WestField = this.EastField - 2;
                 this.SquareList = list;
                 return true;
         }

@@ -106,5 +106,14 @@ namespace Tetris.Properties {
                 return ResourceManager.GetStream("Splat", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream tapSound {
+            get {
+                return ResourceManager.GetStream("tapSound", resourceCulture);
+            }
+        }
     }
 }

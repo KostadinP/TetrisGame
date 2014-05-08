@@ -15,7 +15,7 @@ namespace Tetris
         public GameOverState(Game g)
         {
             game = g;
-            Sounds.GameOverSound();
+            game.sound.GameOverSound();
         }
 
         public void moveDown()

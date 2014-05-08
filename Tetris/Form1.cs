@@ -9,7 +9,7 @@ namespace Tetris
     {
         private Game game;
         public static int MaxTime = 1200;
-        public static int CutTime = 30;
+        public static int CutTime = 100;
 
         public Form1()
         {
@@ -37,7 +37,7 @@ namespace Tetris
                 if (game.player.NewLevel)
                 {
                     timer1.Interval -= CutTime;
-                    Sounds.LevelUpSound();
+                    game.sound.LevelUpSound();
                     game.player.NewLevel = false;
                 }
                 game.HasNewPoints = false;

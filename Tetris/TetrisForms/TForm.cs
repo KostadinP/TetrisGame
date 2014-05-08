@@ -124,10 +124,10 @@ namespace Tetris
         {
             List<Square> list = new List<Square>();
 
-            list.Add(new Square(this.EastField+1, this.SouthField));
-            list.Add(new Square(this.EastField, this.SouthField ));
-            list.Add(new Square(this.EastField, this.SouthField - 1));
-            list.Add(new Square(this.EastField - 1, this.SouthField));
+            list.Add(new Square(this.EastField, this.SouthField));
+            list.Add(new Square(this.EastField-1, this.SouthField ));
+            list.Add(new Square(this.EastField-1, this.SouthField - 1));
+            list.Add(new Square(this.EastField - 2, this.SouthField));
 
             foreach (Square s in list)
             {
@@ -141,8 +141,7 @@ namespace Tetris
                 }
             }
             this.SquareList = list;
-            this.WestField = this.EastField - 1;
-            this.EastField += 1;
+            this.WestField = this.EastField - 2;
             return true;
         }
 
@@ -195,7 +194,6 @@ namespace Tetris
             }
             this.SquareList = list;
             this.WestField = this.EastField - 2;
-            this.EastField -= 1;
             return true;
         }
 

@@ -8,24 +8,40 @@ namespace Tetris
 {
     public class Sounds
     {
-        public static void SplashPlay()
-        {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
-            player.Stream = Properties.Resources.Splat;
-            player.Play();
-        }
-        public static void GameOverSound()
-        {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
-            player.Stream = Properties.Resources.SadTrombone;
-            player.Play();
+        private System.Media.SoundPlayer splashPlayer;
+        private System.Media.SoundPlayer tapPlayer;
+        private System.Media.SoundPlayer GameOverPlayer;
+        private System.Media.SoundPlayer LevelUpPlayer;
+
+
+        public Sounds() {
+            splashPlayer = new System.Media.SoundPlayer();
+            tapPlayer = new System.Media.SoundPlayer();
+            GameOverPlayer = new System.Media.SoundPlayer();
+            LevelUpPlayer = new System.Media.SoundPlayer();
+
+            splashPlayer.Stream = Properties.Resources.Splat;
+            GameOverPlayer.Stream = Properties.Resources.SadTrombone;
+            LevelUpPlayer.Stream = Properties.Resources.LevelUp;
+            tapPlayer.Stream = Properties.Resources.tapSound;
         }
 
-        public static void LevelUpSound()
+        public void SplashPlay()
         {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
-            player.Stream = Properties.Resources.LevelUp;
-            player.Play();
+            splashPlayer.Play();
+        }
+        public void GameOverSound()
+        {
+            GameOverPlayer.Play();
+        }
+
+        public void LevelUpSound()
+        {
+            LevelUpPlayer.Play();
+        }
+
+        public void TapSound() {
+            tapPlayer.Play();
         }
     }
 }
