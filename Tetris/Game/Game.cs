@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Tetris
 {
@@ -249,6 +250,14 @@ namespace Tetris
         private void gameOver() {
             timer.Stop();
             gameState = new GameOverState(this);
+            PlayerNameForm pn=new PlayerNameForm();
+            if (DialogResult.OK == pn.ShowDialog())
+            {
+                player.Name = pn.Ime;
+                player.Date = DateTime.Now;
+                BestPlayersForm bp = new BestPlayersForm(player);
+                bp.Show();
+            }
         }
 
         public void Pause()

@@ -52,6 +52,12 @@
     <Compile Include="Game\GameState.cs" />
     <Compile Include="Game\PausedState.cs" />
     <Compile Include="Game\PreGameState.cs" />
+    <Compile Include="PlayerNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayerNameForm.Designer.cs">
+      <DependentUpon>PlayerNameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Players\BestPlayers.cs" />
     <Compile Include="Players\BestPlayersForm.cs">
       <SubType>Form</SubType>
@@ -88,6 +94,9 @@
     <Compile Include="TetrisForms\TetrisForm.cs" />
     <Compile Include="TetrisForms\TForm.cs" />
     <Compile Include="TetrisForms\ZForm.cs" />
+    <EmbeddedResource Include="PlayerNameForm.resx">
+      <DependentUpon>PlayerNameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Players\BestPlayersForm.resx">
       <DependentUpon>BestPlayersForm.cs</DependentUpon>
     </EmbeddedResource>

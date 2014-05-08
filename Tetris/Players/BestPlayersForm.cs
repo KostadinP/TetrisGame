@@ -12,9 +12,15 @@ namespace Tetris
 {
     public partial class BestPlayersForm : Form
     {
-        public BestPlayersForm()
+        BestPlayers bp;
+        public BestPlayersForm(Player p)
         {
             InitializeComponent();
+            bp = new BestPlayers();
+            ListViewItem lv = new ListViewItem(p.Name);
+            lv.SubItems.Add(p.Points.ToString());
+            lv.SubItems.Add(p.Date.ToShortDateString());
+            listView1.Items.Add(lv);
         }
     }
 }

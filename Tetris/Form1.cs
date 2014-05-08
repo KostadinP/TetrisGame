@@ -64,7 +64,7 @@ namespace Tetris
 
         private void btnScores_Click(object sender, EventArgs e)
         {
-            BestPlayersForm bpf = new BestPlayersForm();
+            BestPlayersForm bpf = new BestPlayersForm(new Player());
             bpf.ShowDialog();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
