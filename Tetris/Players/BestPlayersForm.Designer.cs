@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("sdf");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("fdsd");
             this.listView1 = new System.Windows.Forms.ListView();
             this.clName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clPoints = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,9 +40,6 @@
             this.clName,
             this.clPoints,
             this.clDate});
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(281, 291);
@@ -76,6 +71,8 @@
             this.Controls.Add(this.listView1);
             this.Name = "BestPlayersForm";
             this.Text = "BestPlayersForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BestPlayersForm_FormClosing);
+            this.Load += new System.EventHandler(this.BestPlayersForm_Load);
             this.ResumeLayout(false);
 
         }

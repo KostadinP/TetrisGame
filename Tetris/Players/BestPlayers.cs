@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
+    [Serializable]
     public class BestPlayers
     {
-        private List<Player> bestPlayers;
+        public List<Player> bestPlayers;
 
         public BestPlayers()
         {
