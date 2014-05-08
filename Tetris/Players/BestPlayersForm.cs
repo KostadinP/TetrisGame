@@ -47,7 +47,8 @@ namespace Tetris
 
         public void Serialize()
         {
-            FileStream fs = new FileStream("DataFile.dat", FileMode.Create);
+            string dataFile = AppDomain.CurrentDomain.BaseDirectory + @"\DataFile.dat";
+            FileStream fs = new FileStream(@"../../DataFile.dat", FileMode.Create);
 
             BinaryFormatter formatter = new BinaryFormatter();
             try
@@ -67,7 +68,8 @@ namespace Tetris
 
         public void Deserialize()
         {
-            FileStream fs = new FileStream("DataFile.dat", FileMode.Open);
+            string dataFile = AppDomain.CurrentDomain.BaseDirectory + @"\DataFile.dat";
+            FileStream fs = new FileStream(@"../../DataFile.dat", FileMode.Open);
             try
             {
                 BinaryFormatter formatter = new BinaryFormatter();
