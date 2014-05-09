@@ -47,8 +47,9 @@ namespace Tetris
 
         public void Serialize()
         {
-            string dataFile = AppDomain.CurrentDomain.BaseDirectory + @"\DataFile.dat";
-            FileStream fs = new FileStream(@"../../DataFile.dat", FileMode.Create);
+            string dataFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+@"\DataFile.dat";
+                    
+            FileStream fs = new FileStream(dataFile, FileMode.Create);
 
             BinaryFormatter formatter = new BinaryFormatter();
             try
@@ -68,22 +69,25 @@ namespace Tetris
 
         public void Deserialize()
         {
-            string dataFile = AppDomain.CurrentDomain.BaseDirectory + @"\DataFile.dat";
-            FileStream fs = new FileStream(@"../../DataFile.dat", FileMode.Open);
-            try
+            string dataFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\DataFile.dat";
+            if (File.Exists(dataFile))
             {
-                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream fs = new FileStream(dataFile, FileMode.Open);
+                try
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
 
-                bp = (BestPlayers)formatter.Deserialize(fs);
-            }
-            catch (SerializationException e)
-            {
-                Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
-                throw;
-            }
-            finally
-            {
-                fs.Close();
+                    bp = (BestPlayers)formatter.Deserialize(fs);
+                }
+                catch (SerializationException e)
+                {
+                    Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
+                    throw;
+                }
+                finally
+                {
+                    fs.Close();
+                }
             }
         }
 
