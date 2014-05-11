@@ -15,13 +15,13 @@ namespace Tetris
 {
     public partial class BestPlayersForm : Form
     {
-        BestPlayers bp;
+        public  BestPlayers bp;
         public BestPlayersForm()
         {
             InitializeComponent();
             bp = new BestPlayers();
             Deserialize();
-            bp.orderList();
+            bp.bestPlayers = bp.bestPlayers.OrderByDescending(o => o.Points).ToList();
             foreach (Player p in bp.bestPlayers)
             {
                 ListViewItem lv = new ListViewItem(p.Name);
@@ -37,7 +37,7 @@ namespace Tetris
             bp = new BestPlayers();
             Deserialize();
             bp.bestPlayers.Add(player);
-            bp.orderList();
+            bp.bestPlayers = bp.bestPlayers.OrderByDescending(o => o.Points).Take(10).ToList();
             foreach (Player p in bp.bestPlayers)
             {
                 ListViewItem lv = new ListViewItem(p.Name);
@@ -49,8 +49,9 @@ namespace Tetris
 
         public void Serialize()
         {
-            string dataFile = AppDomain.CurrentDomain.BaseDirectory + @"\DataFile.dat";
-            FileStream fs = new FileStream(@"../../DataFile.dat", FileMode.Create);
+            string dataFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+@"\DataFile.dat";
+                    
+            FileStream fs = new FileStream(dataFile, FileMode.Create);
 
             BinaryFormatter formatter = new BinaryFormatter();
             try
@@ -70,22 +71,25 @@ namespace Tetris
 
         public void Deserialize()
         {
-            string dataFile = AppDomain.CurrentDomain.BaseDirectory + @"\DataFile.dat";
-            FileStream fs = new FileStream(@"../../DataFile.dat", FileMode.Open);
-            try
+            string dataFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\DataFile.dat";
+            if (File.Exists(dataFile))
             {
-                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream fs = new FileStream(dataFile, FileMode.Open);
+                try
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
 
-                bp = (BestPlayers)formatter.Deserialize(fs);
-            }
-            catch (SerializationException e)
-            {
-                Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
-                throw;
-            }
-            finally
-            {
-                fs.Close();
+                    bp = (BestPlayers)formatter.Deserialize(fs);
+                }
+                catch (SerializationException e)
+                {
+                    Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
+                    throw;
+                }
+                finally
+                {
+                    fs.Close();
+                }
             }
         }
 

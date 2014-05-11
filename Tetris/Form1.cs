@@ -10,6 +10,8 @@ namespace Tetris
         private Game game;
         public static int MaxTime = 1200;
         public static int CutTime = 100;
+        BestPlayersForm bpf;
+        Player bestPlayer;
 
         public Form1()
         {
@@ -17,6 +19,9 @@ namespace Tetris
             game = new Game(15, 10,timer1);
             this.DoubleBuffered = true;
             timer1.Interval = MaxTime;
+            bpf = new BestPlayersForm();
+            bestPlayer = bpf.bp.getBestPlayer();
+            bestScoreLbl.Text = bestPlayer.Points.ToString();
         }
 
 
@@ -39,6 +44,9 @@ namespace Tetris
                     timer1.Interval -= CutTime;
                     game.sound.LevelUpSound();
                     game.player.NewLevel = false;
+                }
+                if (game.player.Points > bestPlayer.Points) {
+                    bestScoreLbl.Text = game.player.Points.ToString();
                 }
                 game.HasNewPoints = false;
             }
@@ -64,7 +72,8 @@ namespace Tetris
 
         private void btnScores_Click(object sender, EventArgs e)
         {
-            BestPlayersForm bpf = new BestPlayersForm();
+            bpf = new BestPlayersForm();
+            bestPlayer = bpf.bp.getBestPlayer();
             bpf.ShowDialog();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

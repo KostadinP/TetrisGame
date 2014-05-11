@@ -42,7 +42,7 @@
             this.clDate});
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(281, 291);
+            this.listView1.Size = new System.Drawing.Size(281, 209);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -67,10 +67,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 315);
+            this.ClientSize = new System.Drawing.Size(305, 233);
             this.Controls.Add(this.listView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "BestPlayersForm";
-            this.Text = "BestPlayersForm";
+            this.Text = "Best Players";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BestPlayersForm_FormClosing);
             this.Load += new System.EventHandler(this.BestPlayersForm_Load);
             this.ResumeLayout(false);
