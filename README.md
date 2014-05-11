@@ -43,8 +43,8 @@ ___
 
 Форма за приказ на најдобри резултати
 
-<a href="http://imgur.com/ORlP4sd"><img src="http://i.imgur.com/ORlP4sd.png" title="Hosted by imgur.com" /></a>
-<a href="http://imgur.com/h8FYi8u"><img src="http://i.imgur.com/h8FYi8u.png" title="Hosted by imgur.com" /></a>
-<a href="http://imgur.com/YOW3q0u"><img src="http://i.imgur.com/YOW3q0u.png" title="Hosted by imgur.com" /></a>
+  <a href="http://imgur.com/ORlP4sd"><img src="http://i.imgur.com/ORlP4sd.png" title="Hosted by imgur.com" /></a>
+  <a href="http://imgur.com/h8FYi8u"><img src="http://i.imgur.com/h8FYi8u.png" title="Hosted by imgur.com" /></a>
+  <a href="http://imgur.com/YOW3q0u"><img src="http://i.imgur.com/YOW3q0u.png" title="Hosted by imgur.com" /></a>
 
 
