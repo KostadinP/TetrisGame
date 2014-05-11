@@ -35,24 +35,16 @@ ___
 
 Овозможено е зачувување на најдобрите резултати со помош на серијализација. 
 
-###Упатсво за играње:
-
-Играта се игра со помош на стрелките
-
-Стрелка налево:  се придвижува тетрис формата на лево
-
-Стрелка надесно: се придвижува тетрис формата на десно
-
-Стрелка надолу: се придвижува тетрис формата надолу
-
-Копче 'P' : за паузирање на играта
-
 ### Слики од играта
 
 Главната форма на играта
 
 <a href="http://imgur.com/tVunNhK"><img src="http://i.imgur.com/tVunNhK.png?1" title="Hosted by imgur.com" /></a>
 
+Форма за приказ на најдобри резултати
 
+<a href="http://imgur.com/ORlP4sd"><img src="http://i.imgur.com/ORlP4sd.png" title="Hosted by imgur.com" /></a>
+<a href="http://imgur.com/h8FYi8u"><img src="http://i.imgur.com/h8FYi8u.png" title="Hosted by imgur.com" /></a>
+<a href="http://imgur.com/YOW3q0u"><img src="http://i.imgur.com/YOW3q0u.png" title="Hosted by imgur.com" /></a>
 
 
