@@ -15,12 +15,13 @@ namespace Tetris
 {
     public partial class BestPlayersForm : Form
     {
-        public BestPlayers bp;
+        public  BestPlayers bp;
         public BestPlayersForm()
         {
             InitializeComponent();
             bp = new BestPlayers();
             Deserialize();
+            bp.bestPlayers = bp.bestPlayers.OrderByDescending(o => o.Points).ToList();
             foreach (Player p in bp.bestPlayers)
             {
                 ListViewItem lv = new ListViewItem(p.Name);
@@ -36,6 +37,7 @@ namespace Tetris
             bp = new BestPlayers();
             Deserialize();
             bp.bestPlayers.Add(player);
+            bp.bestPlayers = bp.bestPlayers.OrderByDescending(o => o.Points).Take(10).ToList();
             foreach (Player p in bp.bestPlayers)
             {
                 ListViewItem lv = new ListViewItem(p.Name);
