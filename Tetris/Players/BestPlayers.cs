@@ -19,5 +19,9 @@ namespace Tetris
         {
 
         }
+        public void orderList()
+        {
+            bestPlayers = bestPlayers.OrderByDescending(x => x.Points).ToList();
+        }
     }
 }

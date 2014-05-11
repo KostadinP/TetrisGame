@@ -21,6 +21,7 @@ namespace Tetris
             InitializeComponent();
             bp = new BestPlayers();
             Deserialize();
+            bp.orderList();
             foreach (Player p in bp.bestPlayers)
             {
                 ListViewItem lv = new ListViewItem(p.Name);
@@ -36,6 +37,7 @@ namespace Tetris
             bp = new BestPlayers();
             Deserialize();
             bp.bestPlayers.Add(player);
+            bp.orderList();
             foreach (Player p in bp.bestPlayers)
             {
                 ListViewItem lv = new ListViewItem(p.Name);
