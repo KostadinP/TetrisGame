@@ -15,7 +15,7 @@ namespace Tetris
 {
     public partial class BestPlayersForm : Form
     {
-        BestPlayers bp;
+        public BestPlayers bp;
         public BestPlayersForm()
         {
             InitializeComponent();

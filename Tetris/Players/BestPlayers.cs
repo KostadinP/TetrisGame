@@ -19,5 +19,16 @@ namespace Tetris
         {
 
         }
+
+        public Player getBestPlayer() {
+            if (bestPlayers.Count>0)
+            {
+                int max = bestPlayers.Max(x => x.Points);
+                return bestPlayers.Where(x => x.Points == max).First();
+            }
+            Player temp = new Player();
+            temp.Points = 0;
+            return temp;
+        }
     }
 }
